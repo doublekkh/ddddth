@@ -1,0 +1,80 @@
+<template>
+  <v-app id="inspire">
+    <v-app-bar
+      app
+      color="white"
+    >
+		<v-app-bar-nav-icon></v-app-bar-nav-icon>
+
+		<v-toolbar-title>문서작성(임시)</v-toolbar-title>
+
+        <v-spacer></v-spacer>
+
+        <v-btn class = "white--text" color = "blue-grey darken-2">
+			로그아웃
+		</v-btn>
+   </v-app-bar>
+
+    <v-main class="grey lighten-3">
+      <v-container>
+        <v-row>
+          <v-col>
+              <testCompose/>
+          </v-col>
+
+          <v-col>
+            <v-sheet
+              min-height="90vh"
+              rounded="lg"
+            >
+            </v-sheet>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
+</template>
+
+<script>
+import testCompose from "@/components/testCompose"
+import {mapActions} from 'vuex'
+
+export default {
+  name: "ComposeScreen",
+  components: {
+    testCompose,
+  },
+  methods: {
+    ...mapActions(["logout"])
+  }
+}
+</script>
+
+<style scoped>
+
+  .fill-height{
+    max-width: none;
+    display: block;
+  }
+
+  .inputBox{
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .itemBox{
+    position: absolute;
+    top:10px; bottom:10px;
+  }
+
+  #left {
+    left: 10px; right: 52%;
+    border: 3px solid black;
+    border-radius: 20px;
+  }
+
+  #right {
+    right: 10px; left: 52%;
+  }
+</style>
