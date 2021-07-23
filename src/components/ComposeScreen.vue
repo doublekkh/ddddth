@@ -19,15 +19,11 @@
       <v-container>
         <v-row>
           <v-col>
-              <testCompose/>
+            <document-list/>
           </v-col>
 
           <v-col>
-            <v-sheet
-              min-height="90vh"
-              rounded="lg"
-            >
-            </v-sheet>
+            <create-screen/>
           </v-col>
         </v-row>
       </v-container>
@@ -36,13 +32,15 @@
 </template>
 
 <script>
-import testCompose from "@/components/testCompose"
+import DocumentList from "@/components/DocumentList"
+import CreateScreen from "@/components/CreateScreen"
 import {mapActions} from 'vuex'
 
 export default {
   name: "ComposeScreen",
   components: {
-    testCompose,
+    DocumentList,
+    CreateScreen
   },
   methods: {
     ...mapActions(["logout"])
