@@ -50,7 +50,7 @@
 		</v-data-table>
 
 		<v-file-input class="add" ref="file" type="file" name="file" id="file" accept="text/*" multiple style="display: none"/>
-		<v-btn class = "white--text" color = "blue-grey darken-2" @click="clickFile">문서추가</v-btn>
+		<v-btn id="add" class = "white--text" color = "blue-grey darken-2" @click="clickFile">문서추가</v-btn>
     </v-sheet>
 </template>
 
@@ -182,7 +182,7 @@ export default {
 	position: relative;
 }
 
-.v-btn{
+#add{
 	position: absolute;
 	bottom: 20px;
 	margin-left: -47px;

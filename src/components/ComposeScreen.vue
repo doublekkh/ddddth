@@ -8,9 +8,9 @@
 
 		<v-toolbar-title>문서작성(임시)</v-toolbar-title>
 
-        <v-spacer></v-spacer>
+    <v-spacer></v-spacer>
 
-        <v-btn class = "white--text" color = "blue-grey darken-2">
+    <v-btn class = "white--text" color = "blue-grey darken-2" @click="logout">
 			로그아웃
 		</v-btn>
    </v-app-bar>
