@@ -1,7 +1,8 @@
 <template>
-	<v-layout class="fill-height" column min-height="90vh">
-		<v-flex id="sentenceBox" class="white" style="height: 13vh">
-			<v-btn id="sentencebotton" class="cyan darken-2 grey--text text--lighten-4 text-wrap rounded-xl"
+	<v-layout class="fill-height" column height="90vh">
+		<v-flex id="sentenceBox" class="white" style="height: 15%">
+			<v-btn id="sentencebotton" 
+				class="cyan darken-2 grey--text text--lighten-4 text-wrap text-h6 rounded-xl py-2"
 				outlined
 				elevation="5"
 				v-for="sentence in sentences"
@@ -11,7 +12,7 @@
 				{{ sentence }}
 			</v-btn>
 		</v-flex>
-		<v-flex class="d-flex align-center" style="height: 5vh">
+		<v-flex class="d-flex align-center my-2">
 			<v-toolbar color="#9E9E9E" dense rounded="xl">
 				<v-row justify="start">
 					<v-menu
@@ -49,7 +50,7 @@
 				<v-btn class = "white--text" color = "blue-grey darken-2" @click="sentenceShow">문장표시</v-btn>
 			</v-toolbar>
 		</v-flex>
-		<v-flex style="height: 72vh">
+		<v-flex >
 			<v-textarea
 				height=66vh
 				counter 
@@ -173,7 +174,6 @@ export default {
 	display: block;
 	float: left;
 	margin: 6px;
-	padding: 10px;
 	height: auto;
 	font-size: 25px;
 	text-align: left;
