@@ -1,4 +1,4 @@
-<template>
+  <template>
 	<v-layout class="fill-height" column height="90vh">
 		<v-flex id="sentenceBox" class="white" style="height: 15%">
 			<v-btn id="sentencebotton" 
@@ -178,5 +178,14 @@ export default {
 	font-size: 25px;
 	text-align: left;
 	width: none;
+}
+
+::-webkit-scrollbar{
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: #9E9E9E;
+  border-radius: 10px;
 }
 </style>
