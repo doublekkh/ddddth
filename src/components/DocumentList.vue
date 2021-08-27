@@ -1,5 +1,6 @@
 <template>
-    <v-sheet class="fill-height" rounded="xl" color="white">
+  <v-sheet class="fill-height" rounded="xl" color="white">
+    <!--문서 목록 테이블-->
 		<v-data-table 
 			:headers="headers" 
 			:items="items" 
@@ -13,6 +14,7 @@
 				<v-toolbar flat color="#9E9E9E" class="white--text">
 					<v-toolbar-title>문서목록</v-toolbar-title>
 					<v-spacer></v-spacer>
+          <!--검색 기능-->
 					<v-text-field
 						color="white"
 						v-model="search"
@@ -22,7 +24,9 @@
 						hide-details
 						dark
 					></v-text-field>
-					<v-dialog v-model="dialogDelete" max-width="500px">
+
+          <!--문서 삭제 dialog-->
+          <v-dialog v-model="dialogDelete" max-width="500px">
 						<v-card>
 							<v-card-title class="text-h5">목록에서 지우시겠습니까?</v-card-title>
 							<v-card-actions>
@@ -35,6 +39,8 @@
 					</v-dialog>
 				</v-toolbar>
 			</template>
+
+      <!--문서 이름 항목 / 누르면 문서 표시(DocumentCard) / 툴팁 적용-->
       <template v-slot:item.name="{ item }">
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
@@ -43,10 +49,13 @@
               {{ item.name }}
             </span>
           </template>
+          <!--툴팁으로 표시될 내용-->
           <span>{{ item.name }}</span>
         </v-tooltip>
       </template>
-			<template v-slot:item.actions="{ item }">
+
+      <!--문서 삭제 아이콘 / 누르면 deleteDialog 표시-->
+      <template v-slot:item.actions="{ item }">
         <v-icon
             small
             @click="deleteItem(item)"
@@ -56,7 +65,8 @@
 			</template>
 		</v-data-table>
 
-		<v-expand-transition v-if="showDm">
+    <!--문서 표시(애니메이션)-->
+    <v-expand-transition v-if="showDm">
 			<document-card
           class="cardDm transition-fast-in-fast-out fill-height"
           :name="dmItem.name"
@@ -65,14 +75,18 @@
       />
 		</v-expand-transition>
 
-		<v-btn id="add" class = "white--text" color = "blue-grey darken-2" @click="upload()">문서추가</v-btn>
+    <!--문서 추가 버튼-->
+    <v-btn id="add" class = "white--text" color = "blue-grey darken-2" @click="upload()">문서추가</v-btn>
 
-		<v-dialog v-model="dialogUpload" max-width="500px">
+    <!--문서 추가 dialog-->
+    <v-dialog v-model="dialogUpload" max-width="500px">
 			<v-card>
 				<v-card-title class="text-h5">문서업로드</v-card-title>
+
 				<v-card-text>
 					<v-file-input multiple label="File input" accept="text/*"/>
 				</v-card-text>
+
 				<v-card-actions>
 					<v-spacer></v-spacer>
 					<v-btn color="blue darken-1" text @click="closeUplode">취소</v-btn>
@@ -81,7 +95,7 @@
 				</v-card-actions>
 			</v-card>
 		</v-dialog>
-    </v-sheet>
+  </v-sheet>
 </template>
 
 <script>

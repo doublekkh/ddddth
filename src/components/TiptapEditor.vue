@@ -1,5 +1,6 @@
 <template>
   <div class="editor">
+    <!-- 에디터 메뉴바 선택적으로 표시 (상위 컴포넌트에서 menubar,button = false||true 명시) -->
     <editor-menubar class="edHeader" v-if="swmenubar" :editor="editor" @stshow="$emit('stshow')" :swbutton="swbutton"/>
 
     <editor-content class="edContent" :editor="editor"/>
@@ -25,7 +26,6 @@ export default {
     return {
       editor: null,
       swbutton: this.button,
-      swmenubar: this.menubar
     }
   },
   mounted() {
@@ -42,6 +42,16 @@ export default {
   },
   beforeDestroy() {
     this.editor.destroy();
+  },
+  watch: {
+    editable() {
+      this.editor.setEditable(this.editable)
+    },
+  },
+  computed: {
+    swmenubar: function () {
+      return this.menubar
+    }
   }
 }
 </script>

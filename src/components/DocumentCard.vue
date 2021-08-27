@@ -4,22 +4,32 @@
       outlined
       class="pa-3"
   >
+    <!--문서 제목-->
     <v-card-title class="me-n3">
+      <!--문서 제목이 길 경우 툴팁 활성화(교정중)-->
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
           <span class="dmName text-h5 text-truncate" v-bind="attrs" v-on="on">{{name}}</span>
         </template>
         <span v-if="name.length>10">{{name}}</span>
       </v-tooltip>
+
       <v-spacer></v-spacer>
+
+      <!--닫기버튼 / 닫을때 서버랑 연동, 변경사항 저장-->
       <v-btn icon @click="$emit('close')">
         <v-icon>mdi-close</v-icon>
       </v-btn>
     </v-card-title>
+
+    <!--문서 내용 / 수정 버튼으로 수정 가능하게 변경-->
     <v-card-text class="dmText black--text px-8 mt-5 text-body-1 text-left">
-      <tiptap-editor :description="contents" :menubar="editMenubar" :button="editButton"/>
+      <tiptap-editor :description="contents" v-bind="editorItems"/>
     </v-card-text>
+
     <v-spacer></v-spacer>
+
+    <!--수정 버튼-->
     <v-card-actions class="justify-center mt-5">
       <v-btn class="transbtn white--text" color="blue-grey darken-2" v-if="contentTrans" @click="transItem()">
         수정
@@ -52,20 +62,23 @@ export default {
   data() {
     return {
       contentTrans: true,
-      editMenubar: false,
-      editButton: false
+      editorItems: {
+        menubar: false,
+        button: false,
+        editable: false
+      },
     }
   },
   methods: {
     transItem() {
       this.contentTrans = false
-      this.editMenubar = true
-      this.editButton = true
+      this.editorItems.editable = true
+      this.editorItems.menubar = true
     },
     transItemCommit() {
       this.contentTrans = true
-      this.editMenubar = false
-      this.editButton = false
+      this.editorItems.editable = false
+      this.editorItems.menubar = false
     }
   }
 }

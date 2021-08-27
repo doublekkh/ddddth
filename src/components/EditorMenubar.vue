@@ -2,6 +2,8 @@
   <div>
     <template v-for="(item, index) in items">
       <div class="divider" v-if="item.type === 'divider'" :key="`divider${index}`" />
+
+      <!-- 해당하는 메뉴버튼 아이콘으로 -->
       <button v-else :key="index"
               class="menuItem"
               :class="{ 'is-active': isActive ? isActive(): null }"
@@ -13,7 +15,10 @@
         </svg>
       </button>
     </template>
+
     <v-spacer/>
+
+    <!-- 문장추천 버튼 -->
     <v-btn class="white--text" color="blue-grey darken-2"
            v-if="stswbutton" @click="$emit('stshow')"
     >

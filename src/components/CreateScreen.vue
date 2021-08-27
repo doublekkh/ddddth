@@ -1,5 +1,6 @@
 <template>
 	<v-layout class="fill-height d-flex flex-column ma-0" column>
+    <!--문장추천 창-->
 		<v-flex id="sentenceBox" class="white" style="flex: 0 0 auto; height: 20%">
 			<v-btn id="sentencebotton"
 				class="cyan darken-2 grey--text text--lighten-4 text-wrap text-h6 rounded-xl py-2"
@@ -13,25 +14,33 @@
 			</v-btn>
 		</v-flex>
 
+    <!--에디터 창-->
     <v-flex style="flex: 1 1 auto">
       <tiptap-editor class="fill-height mt-2" @stshow="sentenceShow()" :menubar="true" :button="true"/>
     </v-flex>
 
+    <!--저장버튼 창-->
 		<v-flex class="mt-auto mb-2" style="flex: 0 0 auto">
 			<v-btn class = "white--text" color = "blue-grey darken-2"
 				style="float: right; margin-right:10px;"
 				@click="save"
 			>외부저장</v-btn>
+
 			<v-btn class = "white--text" color = "blue-grey darken-2"
 				style="float: right; margin-right:10px;"
 				@click="save"
 			>클라우드저장</v-btn>
+
+      <!--버튼 클릭시 dialog(저장) 표시-->
 			<v-dialog v-model="dialogSave" max-width="500px">
 				<v-card>
 					<v-card-title class="text-h5">문서저장</v-card-title>
+
+          <!--저장할 때 필수 입력 사항 / 없으면 error-->
 					<v-card-text>
 						<v-text-field placeholder="제목을 입력하세요"/>
 					</v-card-text>
+
 					<v-card-actions>
 						<v-spacer></v-spacer>
 						<v-btn color="blue darken-1" text @click="closeSave">취소</v-btn>
