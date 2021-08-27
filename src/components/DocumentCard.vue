@@ -1,6 +1,5 @@
 <template>
   <v-card
-      shaped
       elevation="5"
       outlined
       class="pa-3"
@@ -8,7 +7,7 @@
     <v-card-title class="me-n3">
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
-          <span class="dmName text-h5" v-bind="attrs" v-on="on">{{name}}</span>
+          <span class="dmName text-h5 text-truncate" v-bind="attrs" v-on="on">{{name}}</span>
         </template>
         <span v-if="name.length>10">{{name}}</span>
       </v-tooltip>
@@ -18,15 +17,7 @@
       </v-btn>
     </v-card-title>
     <v-card-text class="dmText black--text px-8 mt-5 text-body-1 text-left">
-      <span v-if="contentTrans">{{contents}}</span>
-      <v-textarea v-else
-                  row="1"
-                  auto-grow
-                  color="grey lighten-2"
-                  v-model="contents"
-                  no-resize
-                  class="contentTarea"
-      />
+      <tiptap-editor :description="contents" :menubar="editMenubar" :button="editButton"/>
     </v-card-text>
     <v-spacer></v-spacer>
     <v-card-actions class="justify-center mt-5">
@@ -41,6 +32,8 @@
 </template>
 
 <script>
+import TiptapEditor from "@/components/TiptapEditor"
+
 export default {
   name: "DocumentCard",
   props: {
@@ -53,17 +46,26 @@ export default {
       default: '내용없음',
     },
   },
+  components: {
+    TiptapEditor
+  },
   data() {
     return {
       contentTrans: true,
+      editMenubar: false,
+      editButton: false
     }
   },
   methods: {
     transItem() {
       this.contentTrans = false
+      this.editMenubar = true
+      this.editButton = true
     },
     transItemCommit() {
       this.contentTrans = true
+      this.editMenubar = false
+      this.editButton = false
     }
   }
 }
@@ -71,20 +73,20 @@ export default {
 
 <style scoped>
 .v-card{
+  display: block;
   position: relative;
+  overflow: hidden;
+  height: 100%;
 }
 
 .dmName{
   max-width: 70%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .dmText{
-  max-height: 80%;
+  height: 80%;
   padding-right: -20px;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 ::-webkit-scrollbar{

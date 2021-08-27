@@ -15,7 +15,7 @@
 		</v-btn>
    </v-app-bar>
 
-    <v-main class="grey lighten-3">
+    <v-main class="grey lighten-3 ma-0">
       <v-container>
         <v-row>
           <v-col>
@@ -40,7 +40,7 @@ export default {
   name: "ComposeScreen",
   components: {
     DocumentList,
-    CreateScreen
+    CreateScreen,
   },
   methods: {
     ...mapActions(["logout"])

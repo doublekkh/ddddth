@@ -1,7 +1,7 @@
-  <template>
-	<v-layout class="fill-height" column height="90vh">
-		<v-flex id="sentenceBox" class="white" style="height: 15%">
-			<v-btn id="sentencebotton" 
+<template>
+	<v-layout class="fill-height d-flex flex-column ma-0" column>
+		<v-flex id="sentenceBox" class="white" style="flex: 0 0 auto; height: 20%">
+			<v-btn id="sentencebotton"
 				class="cyan darken-2 grey--text text--lighten-4 text-wrap text-h6 rounded-xl py-2"
 				outlined
 				elevation="5"
@@ -12,54 +12,12 @@
 				{{ sentence }}
 			</v-btn>
 		</v-flex>
-		<v-flex class="d-flex align-center my-2">
-			<v-toolbar color="#9E9E9E" dense rounded="xl">
-				<v-row justify="start">
-					<v-menu
-						v-for="menuitem in menuitems"
-						:key="menuitem.name"
-						rounded="br-xl"
-						offset-y
-						open-on-hover
-					>
-						<template v-slot:activator="{ attrs, on }">
-							<v-btn
-								class="white--text ma-2 text-body-1"
-								v-bind="attrs"
-								v-on="on"
-								color="#9E9E9E"
-								text
-							>
-								{{ menuitem.name }}
-							</v-btn>
-						</template>	
 
-						<v-list>
-							<v-list-item
-								v-for="contant in menuitem.contants"
-								:key="contant"
-								link
-							>
-								<v-list-item-title v-text="contant"></v-list-item-title>
-							</v-list-item>
-						</v-list>
-					</v-menu>
-				</v-row>
+    <v-flex style="flex: 1 1 auto">
+      <tiptap-editor class="fill-height mt-2" @stshow="sentenceShow()" :menubar="true" :button="true"/>
+    </v-flex>
 
-				<v-spacer></v-spacer>
-				<v-btn class = "white--text" color = "blue-grey darken-2" @click="sentenceShow">문장표시</v-btn>
-			</v-toolbar>
-		</v-flex>
-		<v-flex >
-			<v-textarea
-				height=66vh
-				counter 
-				label="작성화면"
-				no-resize
-				background-color="white"
-				color="grey lighten-2"
-				outlined
-			></v-textarea>
+		<v-flex class="mt-auto mb-2" style="flex: 0 0 auto">
 			<v-btn class = "white--text" color = "blue-grey darken-2"
 				style="float: right; margin-right:10px;"
 				@click="save"
@@ -87,8 +45,13 @@
 </template>
 
 <script>
+import TiptapEditor from "@/components/TiptapEditor"
+
 export default {
 	name: "DocumentList",
+  components: {
+    TiptapEditor,
+  },
 	data() {
 		return {
 			show: false,
