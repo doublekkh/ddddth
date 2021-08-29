@@ -16,7 +16,7 @@
 
     <!--에디터 창-->
     <v-flex style="flex: 1 1 auto">
-      <tiptap-editor class="fill-height mt-2" @stshow="sentenceShow()" :menubar="true" :button="true"/>
+      <tiptap-editor class="fill-height mt-2" @stshow="sentenceShow()" :menubar="true" :swbutton="true"/>
     </v-flex>
 
     <!--저장버튼 창-->
@@ -70,38 +70,12 @@ export default {
 				"'단어추천'버튼을 누르거나 특정 키를 누르는 것으로 표시 할 수 있습니다.",
 				"역사학자들은 수니파와 시아파가 오늘날 반목하는 이유를 설명하기 위해 노력해왔다. 많은 이들은 갈등의 원인이 오랜 종교적 차이에 있다고 주장한다. 하지만 1300년 동안 두 종족이 갈등한 역사의 모든 사회적, 경제적, 문화적 요인까지 고려해야 한다."
 			],
-			menuitems: [
-				{
-					name: '파일',
-					contants: [
-						'새 문서', '열기'
-					]
-				},
-				{
-					name: '글꼴',
-					contants: [
-						'크기', '폰트', '기울기', '굵게'
-					]
-				},
-				{
-					name: '단락',
-					contants: [
-						'오른쪽', '가운데', '왼쪽'
-					]
-				},
-				{
-					name: '편집',
-					contants: [
-						'붙여넣기', '복사', '잘라내기'
-					]
-				}
-			]
 		}
 	},
 
 	watch: {
 		dialogSave (val) {
-			val || this.closeDelete()
+			val || this.closeSave()
 		}
 	},
 
@@ -149,7 +123,6 @@ export default {
 	height: auto;
 	font-size: 25px;
 	text-align: left;
-	width: none;
 }
 
 ::-webkit-scrollbar{

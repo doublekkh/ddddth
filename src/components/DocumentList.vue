@@ -165,7 +165,7 @@ export default {
 			val || this.closeDelete()
 		},
 		dialogUpload (val) {
-			val || this.closeDelete()
+			val || this.closeUplode()
 		}
 	},
 	
@@ -233,7 +233,6 @@ export default {
 		openDm(item) {
       this.dmItem = Object.assign({}, item)
 			this.showDm = true
-      this.$emit('dmItem', this.dmItem)
 		},
     closeDm() {
       this.showDm = false

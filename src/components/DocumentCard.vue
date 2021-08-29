@@ -46,16 +46,7 @@ import TiptapEditor from "@/components/TiptapEditor"
 
 export default {
   name: "DocumentCard",
-  props: {
-    name: {
-      type: String,
-      default: '문서이름',
-    },
-    contents: {
-      type: String,
-      default: '내용없음',
-    },
-  },
+  props: ["name", "contents"],
   components: {
     TiptapEditor
   },
@@ -64,7 +55,7 @@ export default {
       contentTrans: true,
       editorItems: {
         menubar: false,
-        button: false,
+        swbutton: false,
         editable: false
       },
     }

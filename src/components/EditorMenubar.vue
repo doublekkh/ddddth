@@ -6,8 +6,8 @@
       <!-- 해당하는 메뉴버튼 아이콘으로 -->
       <button v-else :key="index"
               class="menuItem"
-              :class="{ 'is-active': isActive ? isActive(): null }"
-              @click="item.action"
+              :class="{ 'is-active': isActive ? item.isActive(): '' }"
+              @click="item.action()"
               :title="item.title"
       >
         <svg class="remix">
@@ -20,7 +20,7 @@
 
     <!-- 문장추천 버튼 -->
     <v-btn class="white--text" color="blue-grey darken-2"
-           v-if="stswbutton" @click="$emit('stshow')"
+           v-if="swbutton" @click="$emit('stshow')"
     >
       문장추천
     </v-btn>
@@ -32,19 +32,9 @@ import remixiconUrl from 'remixicon/fonts/remixicon.symbol.svg'
 
 export default {
   name: "EditorMenubar",
-  props: {
-    editor: {
-      type: Object,
-      required: true,
-    },
-    swbutton: {
-      type: String,
-      required: true
-    }
-  },
+  props: ["editor", "swbutton"],
   data() {
     return {
-      stswbutton: this.swbutton,
       items: [
         {
           icon: 'bold',

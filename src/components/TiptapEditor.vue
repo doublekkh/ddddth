@@ -19,7 +19,7 @@ import EditorMenubar from "@/components/EditorMenubar";
 
 export default {
   name: "TiptapEditor",
-  props: ["description", "button", "editable", "menubar"],
+  props: ["description", "swbutton", "editable", "menubar"],
   components: {
     EditorContent,
     EditorMenubar
@@ -27,7 +27,6 @@ export default {
   data() {
     return {
       editor: null,
-      swbutton: this.button,
     }
   },
   mounted() {
