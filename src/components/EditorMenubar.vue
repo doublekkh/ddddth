@@ -35,6 +35,8 @@ export default {
   props: ["editor", "swbutton"],
   data() {
     return {
+      remixiconUrl,
+      isActive: null,
       items: [
         {
           icon: 'bold',
@@ -156,7 +158,6 @@ export default {
           action: () => this.editor.chain().focus().redo().run(),
         },
       ],
-      remixiconUrl
     }
   }
 }
