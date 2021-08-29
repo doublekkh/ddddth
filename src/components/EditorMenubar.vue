@@ -48,31 +48,25 @@ export default {
       items: [
         {
           icon: 'bold',
-          title: 'Bold',
+          title: '굵게',
           action: () => this.editor.chain().focus().toggleBold().run(),
           isActive: () => this.editor.isActive('bold'),
         },
         {
           icon: 'italic',
-          title: 'Italic',
+          title: '기울기',
           action: () => this.editor.chain().focus().toggleItalic().run(),
           isActive: () => this.editor.isActive('italic'),
         },
         {
           icon: 'strikethrough',
-          title: 'Strike',
+          title: '취소선',
           action: () => this.editor.chain().focus().toggleStrike().run(),
           isActive: () => this.editor.isActive('strike'),
         },
         {
-          icon: 'code-view',
-          title: 'Code',
-          action: () => this.editor.chain().focus().toggleCode().run(),
-          isActive: () => this.editor.isActive('code'),
-        },
-        {
           icon: 'mark-pen-line',
-          title: 'Highlight',
+          title: '하이라이트',
           action: () => this.editor.chain().focus().toggleHighlight().run(),
           isActive: () => this.editor.isActive('highlight'),
         },
@@ -92,10 +86,22 @@ export default {
           isActive: () => this.editor.isActive('heading', {level: 2}),
         },
         {
-          icon: 'paragraph',
-          title: 'Paragraph',
-          action: () => this.editor.chain().focus().setParagraph().run(),
-          isActive: () => this.editor.isActive('paragraph'),
+          icon: 'align-left',
+          title: '좌정렬',
+          action: () => this.editor.chain().focus().setTextAlign('left').run(),
+          isActive: () => this.editor.isActive({ textAlign: 'left' }),
+        },
+        {
+          icon: 'align-center',
+          title: '가운데정렬',
+          action: () => this.editor.chain().focus().setTextAlign('center').run(),
+          isActive: () => this.editor.isActive({ textAlign: 'center' }),
+        },
+        {
+          icon: 'align-right',
+          title: '우정렬',
+          action: () => this.editor.chain().focus().setTextAlign('right').run(),
+          isActive: () => this.editor.isActive({ textAlign: 'right' }),
         },
         {
           icon: 'list-unordered',
@@ -114,12 +120,6 @@ export default {
           title: 'Task List',
           action: () => this.editor.chain().focus().toggleTaskList().run(),
           isActive: () => this.editor.isActive('taskList'),
-        },
-        {
-          icon: 'code-box-line',
-          title: 'Code Block',
-          action: () => this.editor.chain().focus().toggleCodeBlock().run(),
-          isActive: () => this.editor.isActive('codeBlock'),
         },
         {
           type: 'divider',
@@ -145,7 +145,7 @@ export default {
         },
         {
           icon: 'format-clear',
-          title: 'Clear Format',
+          title: '스타일 없애기',
           action: () => this.editor.chain()
               .focus()
               .clearNodes()
@@ -157,12 +157,12 @@ export default {
         },
         {
           icon: 'arrow-go-back-line',
-          title: 'Undo',
+          title: '실행취소',
           action: () => this.editor.chain().focus().undo().run(),
         },
         {
           icon: 'arrow-go-forward-line',
-          title: 'Redo',
+          title: '재실행',
           action: () => this.editor.chain().focus().redo().run(),
         },
       ],

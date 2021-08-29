@@ -23,7 +23,7 @@
     </v-card-title>
 
     <!--문서 내용 / 수정 버튼으로 수정 가능하게 변경-->
-    <v-card-text class="dmText black--text px-8 mt-5 text-body-1 text-left">
+    <v-card-text class="dmText black--text px-8 mt-5 text-body-1">
       <tiptap-editor :description="contents" v-bind="editorItems"/>
     </v-card-text>
 

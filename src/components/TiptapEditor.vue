@@ -1,9 +1,9 @@
 <template>
-  <div class="editor">
+  <div class="editor text-left">
     <!-- 에디터 메뉴바 선택적으로 표시 (상위 컴포넌트에서 menubar,button = false||true 명시) -->
     <editor-menubar class="edHeader" v-if="swmenubar" :editor="editor" @stshow="$emit('stshow')" :swbutton="swbutton"/>
 
-    <editor-content class="edContent" :editor="editor"/>
+    <editor-content class="edContent"  :editor="editor"/>
   </div>
 </template>
 
@@ -13,6 +13,8 @@ import StarterKit from '@tiptap/starter-kit';
 import TaskList from '@tiptap/extension-task-list'
 import TaskItem from '@tiptap/extension-task-item'
 import Highlight from '@tiptap/extension-highlight'
+import TextAlign from '@tiptap/extension-text-align'
+
 import EditorMenubar from "@/components/EditorMenubar";
 
 export default {
@@ -36,6 +38,9 @@ export default {
         Highlight,
         TaskList,
         TaskItem,
+        TextAlign.configure({
+          types: ['heading', 'paragraph'],
+        }),
       ],
       content: this.description,
     });
@@ -77,12 +82,12 @@ export default {
  }
 
 .edContent {
-   padding: 1.25rem 1rem;
+   padding: 1rem;
    flex: 1 1 auto;
-   overflow-x: hidden;
+   word-break: break-all;
    overflow-y: auto;
    -webkit-overflow-scrolling: touch;
- }
+}
 
 ::-webkit-scrollbar{
   width: 5px;
@@ -92,5 +97,12 @@ export default {
 ::-webkit-scrollbar-thumb{
   background-color: #9E9E9E;
   border-radius: 10px;
+}
+</style>
+
+<!--윤곽선 제거-->
+<style>
+.ProseMirror:focus {
+  outline: none;
 }
 </style>
